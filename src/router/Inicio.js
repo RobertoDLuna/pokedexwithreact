@@ -1,6 +1,6 @@
-import React from "react";
-import { buscaPorNome } from "../services/api";
-// import { buscaPorNome, buscaTodosOsPokemon, buscaPorTipo } from './services/api';
+import React from 'react';
+import { buscaPorNome } from '../services/api';
+import Pokemon from '../components/Pokemon';
 
 export default class Inicio extends React.Component {
 	state = {
@@ -22,24 +22,29 @@ export default class Inicio extends React.Component {
 	}
 
 	render() {
-		const { pokemonBuscado } = this.state;
+		const { pokemonBuscado, pokemonEncontrado } = this.state;
 		return (
 			<div>
-				<input
-					className="input-busca"
-					type="text"
-					onChange={this.OnChange}
-					name="input-busca"
-					value={pokemonBuscado}
-				/>
-				<button
-					className="botao-pesquisar"
-					type="button"
-					onClick={this.OnClick}
-					name="botao-pesquisar"
-				>
-					Pesquisar
-				</button>
+				<div>
+					<input
+						className="input-busca-nome"
+						type="text"
+						onChange={this.OnChange}
+						name="input-busca-nome"
+						value={pokemonBuscado}
+					/>
+					<button
+						className="botao-pesquisar"
+						type="button"
+						onClick={this.OnClick}
+						name="botao-pesquisar-nome"
+					>
+						Pesquisar
+					</button>
+				</div>
+				<section>
+					<Pokemon objetoPokemon={ pokemonEncontrado }  />
+				</section>
 			</div>
 		);
 	}
